@@ -13,10 +13,6 @@ public class Main {
             String a = allJLines[i] + " " + allALines[i] + " " + allVLines[i] + " " + allALines[i];
             System.out.println(a);
         }
-        Person p1 = new Person();
-        p1.setName("王尼玛");
-        System.out.println(p1.toString());
-        System.out.println(p1.isBoy());
 
     }
 }
