@@ -1,8 +1,19 @@
 package com.company;
 
 public class Student extends Person {
-    private String studentID;
-    private int grade;
+    protected String studentID;
+    protected int grade;
+    Student() {
+        super(0, "none", true);
+        this.studentID = "0";
+        this.grade = 1;
+    }
+
+    Student(int age, String name, boolean sex, String studentID, int grade) {
+        super(age, name, sex);
+        this.studentID = studentID;
+        this.grade = grade;
+    }
 
     public void setStudentID(String studentID) {
         this.studentID = studentID;

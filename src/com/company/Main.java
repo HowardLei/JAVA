@@ -13,10 +13,11 @@ public class Main {
             String a = allJLines[i] + " " + allALines[i] + " " + allVLines[i] + " " + allALines[i];
             System.out.println(a);
         }
-        Person p1 = new Person();
-        p1.setName("王尼玛");
-        System.out.println(p1.toString());
-        System.out.println(p1.isBoy());
-
+        Person p1 = new Person(2, "王尼玛", true);
+        Person p2 = new Person(p1.getAge(), p1.getName(), p1.isBoy());
+        CompareOperator.demo();
+    }
+    public static void Josepic() {
+//        1、
     }
 }
