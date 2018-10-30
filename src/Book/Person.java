@@ -1,0 +1,65 @@
+package Book;
+
+public class Person {
+    private int age;
+    private String name;
+    private Mydate birthday;
+    private String sex, province, city;
+    private static int count = 0;
+
+    Person(String name, Mydate birthday, String sex, String provice, String city, int age) {
+        this.name = name;
+        this.birthday = birthday;
+        this.city = city;
+        this.sex = sex;
+        this.province = provice;
+        this.age = age;
+        count++;
+    }
+
+    Person(Person p) {
+        this(p.name, new Mydate(p.birthday), p.sex, p.province, p.city, p.age);
+    }
+
+    Person() {
+        this.city = "";
+        this.province = "";
+        this.age = 0;
+        this.name = "";
+        this.birthday = new Mydate(2000, 1, 1);
+    }
+
+    public static String showCount() {
+        return "一共创建了 " + count + " 个人";
+    }
+
+    @Override
+    public String toString() {
+        return "我是" + this.name + "，今年" + this.age + "岁，家住" + this.province + "省" + this.city + "市人。";
+    }
+    /*
+    * 重写父类的比较方法
+    * 格式：
+    * */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        } else if (obj instanceof Person){
+            Person p1 = (Person) obj;
+            return this.name.equals(p1.name) && this.birthday.equals(p1.birthday) && this.sex.equals(p1.sex) && this.province.equals(p1.province) && this.city.equals(p1.city) && this.age == p1.age;
+        }
+        return false;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        try {
+            System.out.println("人要走了");
+        } catch (Throwable t) {
+            throw t;
+        } finally {
+            super.finalize();
+        }
+    }
+}
