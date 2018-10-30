@@ -37,7 +37,7 @@ public class Person {
     public String toString() {
         return "我是" + this.name + "，今年" + this.age + "岁，家住" + this.province + "省" + this.city + "市人。";
     }
-    /*
+    /**
     * 重写父类的比较方法
     * 格式：if (obj == this) {
             return true;
