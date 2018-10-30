@@ -1,18 +1,17 @@
 package com.company;
 
+import Book.Mydate;
+import Book.Person;
+
 public class Main {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Welcome to Java");
-        }
-        String[] allJLines = {"    J", "    J", "J   J", " J J "};
-        String[] allALines = {"   A   ", "  A A  ", " AAAAA ", "A     A"};
-        String[] allVLines = {"V     V", " V   V ", "  V V  ", "   V   "};
-        for (int i = 0; i < allALines.length; i++) {
-            String a = allJLines[i] + " " + allALines[i] + " " + allVLines[i] + " " + allALines[i];
-            System.out.println(a);
-        }
-
+        Person person = new Person("王尼玛", new Mydate(2000, 2, 29), "male", "北京", "北京", 18);
+        Person person1 = new Person(person);
+        boolean a = person.equals(person1);
+        System.out.println(person);
+        System.out.println(person1);
+        System.out.println(Person.showCount());
+        System.out.println(a);
     }
 }
