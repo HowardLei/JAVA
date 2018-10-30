@@ -39,7 +39,13 @@ public class Person {
     }
     /*
     * 重写父类的比较方法
-    * 格式：
+    * 格式：if (obj == this) {
+            return true;
+        } else if (obj instanceof 当前类){
+            Person p1 = (当前类) obj;
+            return [super.equal(p1) &&] 当前类的属性的比较。 其中如果父类不是 Object 类的时候需要比较父类的属性是否相同。
+        }
+        return false;
     * */
     @Override
     public boolean equals(Object obj) {
