@@ -7,7 +7,7 @@ public class Person {
     private String sex, province, city;
     private static int count = 0;
 
-    Person(String name, Mydate birthday, String sex, String provice, String city, int age) {
+    public Person(String name, Mydate birthday, String sex, String provice, String city, int age) {
         this.name = name;
         this.birthday = birthday;
         this.city = city;
@@ -17,11 +17,11 @@ public class Person {
         count++;
     }
 
-    Person(Person p) {
+    public Person(Person p) {
         this(p.name, new Mydate(p.birthday), p.sex, p.province, p.city, p.age);
     }
 
-    Person() {
+    public Person() {
         this.city = "";
         this.province = "";
         this.age = 0;
@@ -49,23 +49,13 @@ public class Person {
     * */
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
+        if (this == obj) {
             return true;
-        } else if (obj instanceof Person){
+        }
+        if (obj instanceof Person) {
             Person p1 = (Person) obj;
             return this.name.equals(p1.name) && this.birthday.equals(p1.birthday) && this.sex.equals(p1.sex) && this.province.equals(p1.province) && this.city.equals(p1.city) && this.age == p1.age;
         }
         return false;
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        try {
-            System.out.println("人要走了");
-        } catch (Throwable t) {
-            throw t;
-        } finally {
-            super.finalize();
-        }
     }
 }
