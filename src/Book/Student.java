@@ -4,6 +4,7 @@ public class Student extends Person {
     private String ID, department, speciality;
     // 团员属性
     private boolean member;
+
     Student(String ID, String department, String speciality, boolean member) {
         this();
         this.ID = ID;
