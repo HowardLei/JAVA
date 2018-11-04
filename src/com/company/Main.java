@@ -4,7 +4,6 @@ import Book.Mydate;
 import Book.Person;
 
 public class Main {
-
     public static void main(String[] args) {
         Person person = new Person("王尼玛", new Mydate(2000, 2, 29), "male", "北京", "北京", 18);
         Person person1 = new Person(person);
