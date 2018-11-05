@@ -10,6 +10,11 @@ public class Mydate {
         this.day = date;
         this.month = month;
     }
+    Mydate() {
+        this.year = 1970;
+        this.month = 2;
+        this.day = 1;
+    }
 
     public Mydate(Mydate date) {
         this(date.year, date.month,date.day);
