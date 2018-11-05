@@ -5,11 +5,7 @@ public class Square implements Area {
 
     // 判断图形是不是正方形
     public boolean isSquare() {
-        if (Math.abs(p1.getX() - p2.getX()) == Math.abs(p1.getY() - p2.getY())) {
-            return true;
-        } else {
-            return false;
-        }
+        return Math.abs(p1.getX() - p2.getX()) == Math.abs(p1.getY() - p2.getY());
     }
 
     private double length() {
