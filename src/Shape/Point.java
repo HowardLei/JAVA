@@ -1,15 +1,22 @@
 package Shape;
 
 public class Point {
+
     private double x;
     private double y;
+
     Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
+
     Point() {
         this.x = 0;
         this.y = 0;
+    }
+
+    Point(Point point) {
+        this(point.x, point.y);
     }
 
     public void setX(double x) {
@@ -20,11 +27,11 @@ public class Point {
         this.y = y;
     }
 
-    public double getX() {
+    protected double getX() {
         return this.x;
     }
 
-    public double getY() {
+    protected double getY() {
         return this.y;
     }
 }

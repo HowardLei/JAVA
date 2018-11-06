@@ -2,6 +2,14 @@ package Shape;
 
 public class Square implements Area {
     private Point p1, p2;
+    private Square(Point p1, Point p2) {
+        this.p1 = p1;
+        this.p2 = p2;
+    }
+
+    public Square() {
+        this(new Point(), new Point(1, 1));
+    }
 
     // 判断图形是不是正方形
     public boolean isSquare() {
@@ -19,6 +27,6 @@ public class Square implements Area {
 
     @Override
     public String toString() {
-        return String.format("这个正方形的边长为 %lf cm，面积为 %lf cm^2。", this.length(), this.area());
+        return String.format("这个正方形的边长为 %f cm，面积为 %f cm^2。", this.length(), this.area());
     }
 }

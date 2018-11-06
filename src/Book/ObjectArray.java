@@ -1,7 +1,5 @@
 package Book;
 
-import javax.swing.text.StyledEditorKit;
-
 public class ObjectArray {
     public static void print(Object value[]) {
         if (value != null) {
@@ -25,11 +23,11 @@ public class ObjectArray {
             }
             Object[] array = new Object[value1.length + value2.length];
             int i = 0, j = 0;
-            for (int k = 0; k < value1.length; k++) {
-                array[i++] = value1[k];
+            for (Object aValue1 : value1) {
+                array[i++] = aValue1;
             }
-            for (int q = 0; q < value2.length; q++) {
-                array[i++] = value2[q];
+            for (Object aValue2 : value2) {
+                array[i++] = aValue2;
             }
             return array;
         }
