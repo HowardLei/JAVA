@@ -1,7 +1,9 @@
 package Shape;
 
-public class Square implements Area {
+public class Square extends CloseFigure implements Area {
+
     private Point p1, p2;
+
     private Square(Point p1, Point p2) {
         this.p1 = p1;
         this.p2 = p2;

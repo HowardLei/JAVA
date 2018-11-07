@@ -1,5 +1,7 @@
 package Book;
 
+import com.sun.source.tree.Tree;
+
 public class ObjectArray {
     public static void print(Object value[]) {
         if (value != null) {
@@ -22,9 +24,10 @@ public class ObjectArray {
                 return value1;
             }
             Object[] array = new Object[value1.length + value2.length];
-            int i = 0, j = 0;
+            int i = 0;
             for (Object aValue1 : value1) {
                 array[i++] = aValue1;
+                System.out.println(i);
             }
             for (Object aValue2 : value2) {
                 array[i++] = aValue2;
@@ -35,16 +38,19 @@ public class ObjectArray {
 
     public static void main(String[] args) {
         Integer[] a = new Integer[12];
-        for (int i = 0; i < a.length; i++) {
-            a[i] = i;
+        for (int j = 0; j < a.length; j++) {
+            a[j] = j;
+        }
+        for (Integer integer: a) {
+            System.out.println(integer);
         }
         Integer[] b = new Integer[4];
-        for (int i = 1; i < b.length; i++) {
-            b[i] = i;
+        for (int i = 0; i < b.length; i++) {
+            b[i] = i + a[a.length - 1];
         }
         Object[] array = concat(a, b);
-        for (Object i: array) {
-            System.out.println(i);
+        for (Object s: array) {
+            System.out.println(s);
         }
     }
 }

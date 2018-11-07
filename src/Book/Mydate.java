@@ -1,6 +1,7 @@
 package Book;
 
 public class Mydate {
+
     private int year;
     private int month;
     private int day;
@@ -10,14 +11,15 @@ public class Mydate {
         this.day = date;
         this.month = month;
     }
+
     Mydate() {
         this.year = 1970;
-        this.month = 2;
+        this.month = 1;
         this.day = 1;
     }
 
     public Mydate(Mydate date) {
-        this(date.year, date.month,date.day);
+        this(date.year, date.month, date.day);
     }
 
     @Override
@@ -36,4 +38,5 @@ public class Mydate {
     public String toString() {
         return String.format("%d年%02d月%02d日\n", this.year, this.month, this.day);
     }
+
 }

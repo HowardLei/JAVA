@@ -11,8 +11,7 @@ public class Point {
     }
 
     Point() {
-        this.x = 0;
-        this.y = 0;
+        this(0, 0);
     }
 
     Point(Point point) {
@@ -27,11 +26,11 @@ public class Point {
         this.y = y;
     }
 
-    protected double getX() {
+    public double getX() {
         return this.x;
     }
 
-    protected double getY() {
+    public double getY() {
         return this.y;
     }
 }
