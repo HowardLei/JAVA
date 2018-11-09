@@ -1,6 +1,6 @@
 package Shape;
 
-public class Square extends CloseFigure implements Area {
+public class Square extends CloseFigure implements Area{
 
     private Point p1, p2;
 
