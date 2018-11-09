@@ -1,7 +1,5 @@
 package Book;
 
-import com.sun.source.tree.Tree;
-
 public class ObjectArray {
     public static void print(Object value[]) {
         if (value != null) {
@@ -12,7 +10,12 @@ public class ObjectArray {
             }
         }
     }
-
+    /**
+     * 数组的合并
+     * @param value1 需要合并的第一个数组
+     * @param value2 需要合并的第二个数组
+     * @return 合并完成的数组
+     * */
     public static Object[] concat(Object value1[], Object value2[]) {
         if (value1 == null && value2 == null) {
             return null;
