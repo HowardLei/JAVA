@@ -4,9 +4,12 @@ public class Square extends CloseFigure implements Area{
 
     private Point p1, p2;
 
-    public Square(Point p1, Point p2)  {
+    public Square(Point p1, Point p2) {
         this.p1 = p1;
         this.p2 = p2;
+        if (isSquare()) {
+            System.out.println("对不起，你输入的不是");
+        }
     }
 
     public Square() {
