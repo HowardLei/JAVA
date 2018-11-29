@@ -9,10 +9,26 @@ public class ComplexNumber implements Comparable<ComplexNumber>{
         this.realNumber = realNumber;
     }
     ComplexNumber(String s) throws NumberFormatException {
-
+        if (s.matches("\\d+\\+\\d+i")) {
+            String[] arr = s.split("\\+");
+            this.realNumber = Integer.parseInt(arr[0]);
+            arr[1] = arr[1].substring(0, arr[1].length() - 1);
+            this.imaginaryNumber = Integer.parseInt(arr[1]);
+        } else {
+            throw new NumberFormatException("格式错误");
+        }
     }
     public static ComplexNumber parseComplexNumber(String s) throws NumberFormatException {
-        return null;
+        ComplexNumber number = new ComplexNumber(0, 0);
+        if (s.matches("\\d+\\+\\d+i")) {
+            String[] arr = s.split("\\+");
+            number.realNumber = Integer.parseInt(arr[0]);
+            arr[1] = arr[1].substring(0, arr[1].length() - 1);
+            number.imaginaryNumber = Integer.parseInt(arr[1]);
+            return number;
+        } else {
+            throw new NumberFormatException("格式错误");
+        }
     }
     /**
      * 复数加法的运算（对象方法）
