@@ -8,7 +8,7 @@ public class Complex implements Comparable<Complex> {
         this.imaginaryNumber = imaginaryNumber;
         this.realNumber = realNumber;
     }
-    Complex(String s) throws NumberFormatException {
+    public Complex(String s) throws NumberFormatException {
         if (s.matches("\\d+\\+\\d+i")) {
             String[] arr = s.split("\\+");
             this.realNumber = Integer.parseInt(arr[0]);
@@ -22,6 +22,10 @@ public class Complex implements Comparable<Complex> {
         } else {
             throw new NumberFormatException("输入格式错误");
         }
+    }
+    public Complex(Complex number) {
+        this.realNumber = number.realNumber;
+        this.imaginaryNumber = number.imaginaryNumber;
     }
     public static Complex parseComplex(String s) throws NumberFormatException {
         Complex number = new Complex(0, 0);
