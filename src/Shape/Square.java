@@ -2,6 +2,7 @@ package Shape;
 
 public class Square extends CloseFigure implements Area{
 
+    private static final Exception squareFormatException = new Exception();
     private Point p1, p2;
 
     public Square(Point p1, Point p2) {

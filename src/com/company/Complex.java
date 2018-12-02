@@ -1,33 +1,44 @@
 package com.company;
 
-public class ComplexNumber implements Comparable<ComplexNumber>{
+public class Complex implements Comparable<Complex> {
     private int realNumber;
     private int imaginaryNumber;
 
-    public ComplexNumber(int realNumber, int imaginaryNumber) {
+    public Complex(int realNumber, int imaginaryNumber) {
         this.imaginaryNumber = imaginaryNumber;
         this.realNumber = realNumber;
     }
-    ComplexNumber(String s) throws NumberFormatException {
+    Complex(String s) throws NumberFormatException {
         if (s.matches("\\d+\\+\\d+i")) {
             String[] arr = s.split("\\+");
             this.realNumber = Integer.parseInt(arr[0]);
             arr[1] = arr[1].substring(0, arr[1].length() - 1);
             this.imaginaryNumber = Integer.parseInt(arr[1]);
+        } else if (s.matches("\\d+\\-\\d+i")) {
+            String[] arr = s.split("\\-");
+            this.realNumber = Integer.parseInt(arr[0]);
+            arr[1] = arr[1].substring(0, arr[1].length() - 1);
+            this.imaginaryNumber = -Integer.parseInt(arr[1]);
         } else {
-            throw new NumberFormatException("格式错误");
+            throw new NumberFormatException("输入格式错误");
         }
     }
-    public static ComplexNumber parseComplexNumber(String s) throws NumberFormatException {
-        ComplexNumber number = new ComplexNumber(0, 0);
+    public static Complex parseComplex(String s) throws NumberFormatException {
+        Complex number = new Complex(0, 0);
         if (s.matches("\\d+\\+\\d+i")) {
             String[] arr = s.split("\\+");
             number.realNumber = Integer.parseInt(arr[0]);
             arr[1] = arr[1].substring(0, arr[1].length() - 1);
             number.imaginaryNumber = Integer.parseInt(arr[1]);
             return number;
+        } else if (s.matches("\\d+\\-\\d+i")) {
+            String[] arr = s.split("\\-");
+            number.realNumber = Integer.parseInt(arr[0]);
+            arr[1] = arr[1].substring(0, arr[1].length() - 1);
+            number.imaginaryNumber = -Integer.parseInt(arr[1]);
+            return number;
         } else {
-            throw new NumberFormatException("格式错误");
+            throw new NumberFormatException("输入格式错误");
         }
     }
     /**
@@ -36,8 +47,8 @@ public class ComplexNumber implements Comparable<ComplexNumber>{
      * @param obj:需要计算的复数
      * @return 计算出的复数结果
      */
-    public ComplexNumber add(ComplexNumber obj) {
-        ComplexNumber res = new ComplexNumber(0, 0);
+    public Complex add(Complex obj) {
+        Complex res = new Complex(0, 0);
         res.realNumber = this.realNumber + obj.realNumber;
         res.imaginaryNumber = this.imaginaryNumber + obj.imaginaryNumber;
         return res;
@@ -49,8 +60,8 @@ public class ComplexNumber implements Comparable<ComplexNumber>{
      * @param obj:需要计算的复数
      * @return 计算出的复数结果
      */
-    public ComplexNumber delete(ComplexNumber obj) {
-        ComplexNumber res = new ComplexNumber(0, 0);
+    public Complex delete(Complex obj) {
+        Complex res = new Complex(0, 0);
         res.realNumber = this.realNumber - obj.realNumber;
         res.imaginaryNumber = this.imaginaryNumber - obj.imaginaryNumber;
         return res;
@@ -67,8 +78,8 @@ public class ComplexNumber implements Comparable<ComplexNumber>{
         if (this == obj) {
             return true;
         }
-        if (obj instanceof ComplexNumber) {
-            ComplexNumber number = (ComplexNumber) obj;
+        if (obj instanceof Complex) {
+            Complex number = (Complex) obj;
             return this.realNumber == number.realNumber && this.imaginaryNumber == number.imaginaryNumber;
         }
         return false;
@@ -79,7 +90,7 @@ public class ComplexNumber implements Comparable<ComplexNumber>{
      * @return 执行方法的复数大于比较的复数，返回1，小于返回-1，等于返回0.
      * */
     @Override
-    public int compareTo(ComplexNumber number) {
+    public int compareTo(Complex number) {
         double num1 = Math.sqrt(Math.pow(realNumber, 2) + Math.pow(imaginaryNumber, 2));
         double num2 = Math.sqrt(Math.pow(number.realNumber, 2) + Math.pow(number.imaginaryNumber, 2));
         return Double.compare(num1, num2);
