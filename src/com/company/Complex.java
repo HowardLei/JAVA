@@ -8,6 +8,12 @@ public class Complex implements Comparable<Complex> {
         this.imaginaryNumber = imaginaryNumber;
         this.realNumber = realNumber;
     }
+
+    /**
+     * 字符串的构造方法，如果不成功抛出 NumberFormatException
+     *
+     * @param s 需要进行构造的字符串
+     */
     public Complex(String s) throws NumberFormatException {
         if (s.matches("\\d+\\+\\d+i")) {
             String[] arr = s.split("\\+");
@@ -23,10 +29,23 @@ public class Complex implements Comparable<Complex> {
             throw new NumberFormatException("输入格式错误");
         }
     }
+
+    /**
+     * 拷贝构造方法
+     *
+     * @param number 需要重新创建的复数
+     */
     public Complex(Complex number) {
         this.realNumber = number.realNumber;
         this.imaginaryNumber = number.imaginaryNumber;
     }
+
+    /**
+     * 将一个串转化为复数，如果能转化返回转化成功的复数，否则抛出 NumberFormatException
+     *
+     * @param s 需要转化的字符串
+     * @return 转化成功的复数对象
+     */
     public static Complex parseComplex(String s) throws NumberFormatException {
         Complex number = new Complex(0, 0);
         if (s.matches("\\d+\\+\\d+i")) {
@@ -45,6 +64,7 @@ public class Complex implements Comparable<Complex> {
             throw new NumberFormatException("输入格式错误");
         }
     }
+
     /**
      * 复数加法的运算（对象方法）
      *
@@ -76,7 +96,12 @@ public class Complex implements Comparable<Complex> {
         return realNumber + "+" + imaginaryNumber + "i";
     }
 
-    // 判断方法
+    /**
+     * 判断两个复数是否相同
+     *
+     * @param obj 需要比较复数
+     * @return 如果相同返回 true ，否则返回 false
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -88,11 +113,13 @@ public class Complex implements Comparable<Complex> {
         }
         return false;
     }
+
     /**
-     * 比较两个复数模的大小
+     * 比较两个复数模的大小，实现的是 Comparable 接口中的方法
+     *
      * @param number 需要比较的复数
      * @return 执行方法的复数大于比较的复数，返回1，小于返回-1，等于返回0.
-     * */
+     */
     @Override
     public int compareTo(Complex number) {
         double num1 = Math.sqrt(Math.pow(realNumber, 2) + Math.pow(imaginaryNumber, 2));

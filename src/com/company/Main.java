@@ -40,6 +40,12 @@ public class Main {
         }
     }
 
+    /**
+     * 将 equals 方法中返回的结果用串来表示出来
+     *
+     * @param res equals 方法中的返回值
+     * @return 如果参数为 true 返回相同，否则返回不同
+     */
     public static final String BoolToString(boolean res) {
         if (res == true) {
             return "相同";
