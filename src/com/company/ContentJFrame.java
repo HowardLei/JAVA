@@ -8,6 +8,8 @@ public class ContentJFrame extends JFrame {
         super("复数表达式计算");
         var container = this.getContentPane();
         this.setBounds(300, 300, 300, 300);
+        this.complex1 = new JComplex();
+        container.add(complex1);
         this.setVisible(true);
     }
 

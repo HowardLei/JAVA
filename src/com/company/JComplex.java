@@ -1,7 +1,6 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 public class JComplex extends JComponent {
 
@@ -52,7 +51,4 @@ public class JComplex extends JComponent {
         component.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
 }
