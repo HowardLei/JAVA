@@ -3,7 +3,7 @@ package com.company;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class JComplex extends JComponent implements Action {
+public class JComplex extends JComponent {
 
     private JTextField textField1, textField2;
     private JLabel label1, label2;
