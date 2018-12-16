@@ -1,54 +1,79 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class JComplex extends JComponent {
+public class JComplex extends JFrame {
 
     private JTextField textField1, textField2;
     private JLabel label1, label2;
     private Complex complex1, complex2;
 
     public JComplex() {
-        this.setFrame();
+        super("复数表达式计算");
+        this.setBounds(200, 200, 300, 300);
+        var container = this.getContentPane();
         this.setData();
+        this.setFrame();
+        JComponent[] arr = {this.textField1, this.textField2, this.label1, this.label2};
+        for (JComponent component : arr) {
+            container.add(component);
+        }
+        this.setLayout(null);
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     private void setFrame() {
         int margin = 10;
-        int textField1X = 0;
-        int textField1Y = 0;
-        int textField1H = 50;
-        int textField1W = 100;
-        this.textField1.setBounds(textField1X, textField1Y, textField1W, textField1H);
+        int textField1X = 50;
+        int textField1Y = margin;
+        int textField1H = 20;
+        int textField1W = 50;
+        var text1Frame = new Rectangle(textField1X, textField1Y, textField1W, textField1H);
+        this.textField1.setBounds(text1Frame);
 
-        int label1W = 30;
+        int label1W = 10;
         int label1H = textField1H;
-        int label1X = textField1W + margin;
-        int label1Y = textField1Y;
-        this.label1.setBounds(label1X, label1Y, label1W, label1H);
+        int label1X = (int) text1Frame.getMaxX() + margin;
+        int label1Y = margin;
+        var label1Frame = new Rectangle(label1X, label1Y, label1W, label1H);
+        this.label1.setBounds(label1Frame);
 
         int textField2W = textField1W;
         int textField2H = textField1H;
-        int textField2X = label1X + margin;
+        int textField2X = (int) label1Frame.getMaxX() + margin;
         int textField2Y = textField1Y;
-        this.textField2.setBounds(textField2X, textField2Y, textField2W, textField2H);
+        var textField2Frame = new Rectangle(textField2X, textField2Y, textField2W, textField2H);
+        this.textField2.setBounds(textField2Frame);
 
         int label2W = label1W;
         int label2H = label1H;
-        int label2X = textField2X + margin;
+        int label2X = (int) textField2Frame.getMaxX() + margin;
         int label2Y = textField2Y;
         this.label2.setBounds(label2X, label2Y, label2W, label2H);
+        this.label2.setHorizontalAlignment(SwingConstants.LEFT);
+
+        System.out.println("textField1.getBounds() = " + textField1.getBounds());
+        System.out.println("label1.getBounds() = " + label1.getBounds());
+        System.out.println("textField2.getBounds() = " + textField2.getBounds());
+        System.out.println("label2.getBounds() = " + label2.getBounds());
     }
 
     private void setData() {
-        canSee(textField1);
-        canSee(textField2);
-        canSee(label1);
-        canSee(label2);
+        this.textField1 = new JTextField();
+        this.textField2 = new JTextField();
+        this.label1 = new JLabel("+");
+        this.label2 = new JLabel("i", SwingConstants.CENTER);
+
+        this.textField1.setVisible(true);
+        this.textField2.setVisible(true);
+        this.label1.setVisible(true);
+        this.label2.setVisible(true);
     }
 
-    private static void canSee(JComponent component) {
-        component.setVisible(true);
+    public static void main(String[] args) {
+        new JComplex();
     }
-
 }

@@ -9,6 +9,8 @@ public class ContentJFrame extends JFrame {
         var container = this.getContentPane();
         this.setBounds(300, 300, 300, 300);
         this.complex1 = new JComplex();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.complex1.setBounds(0, 0, 100, 100);
         container.add(complex1);
         this.setVisible(true);
     }

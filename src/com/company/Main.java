@@ -3,7 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Complex number = new Complex("2+3i");
+        var number = new Complex("2+3i");
         Complex number1;
         try {
             number1 = new Complex("avsa+2");
@@ -15,7 +15,7 @@ public class Main {
         Complex number2 = new Complex(5, 3);
         number1 = number.add(number2);
         System.out.println("number + number2 的结果为：" + number1.toString());
-        Complex number3 = new Complex(number);
+        var number3 = new Complex(number);
         System.out.println("number 与 number1 的模比较结果为：" + IntToString(number.compareTo(number1)));
         System.out.println("number 与 number3 的模比较结果为：" + IntToString(number.compareTo(number3)));
         System.out.println("number 与 number2 是否相同？ 答：" + BoolToString(number.equals(number2)));
