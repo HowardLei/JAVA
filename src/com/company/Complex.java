@@ -1,6 +1,7 @@
 package com.company;
 
 public class Complex implements Comparable<Complex> {
+
     private int realNumber;
     private int imaginaryNumber;
 
@@ -38,6 +39,18 @@ public class Complex implements Comparable<Complex> {
     public Complex(Complex number) {
         this.realNumber = number.realNumber;
         this.imaginaryNumber = number.imaginaryNumber;
+    }
+
+    public Complex() {
+        this(0, 0);
+    }
+
+    public int getRealNumber() {
+        return realNumber;
+    }
+
+    public int getImaginaryNumber() {
+        return imaginaryNumber;
     }
 
     /**
@@ -91,6 +104,18 @@ public class Complex implements Comparable<Complex> {
         return res;
     }
 
+    public Complex multiple(Complex obj) {
+        var real = this.realNumber * obj.realNumber - this.imaginaryNumber * obj.imaginaryNumber;
+        var image = this.imaginaryNumber * obj.realNumber + this.realNumber * obj.imaginaryNumber;
+        return new Complex(real, image);
+    }
+
+    public Complex divide(Complex obj) {
+        var down = Math.pow(obj.realNumber, 2) + Math.pow(obj.imaginaryNumber, 2);
+        var real = this.realNumber * obj.realNumber + this.imaginaryNumber * obj.imaginaryNumber;
+        return null;
+    }
+
     @Override
     public String toString() {
         return realNumber + "+" + imaginaryNumber + "i";
@@ -126,4 +151,5 @@ public class Complex implements Comparable<Complex> {
         double num2 = Math.sqrt(Math.pow(number.realNumber, 2) + Math.pow(number.imaginaryNumber, 2));
         return Double.compare(num1, num2);
     }
+
 }

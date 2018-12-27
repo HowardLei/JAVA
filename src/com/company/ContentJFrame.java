@@ -1,10 +1,12 @@
 package com.company;
 
 import javax.swing.*;
+import javax.swing.text.AbstractDocument;
 import java.awt.*;
 import java.awt.event.*;
 
 public class ContentJFrame extends JFrame implements ActionListener {
+
     private JComplex complex1, complex2, complex3, complex4;
     private JComboBox<String> box1, box2;
     private JButton button;
@@ -72,16 +74,37 @@ public class ContentJFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // 当点击按钮的时候，执行下边的方法
         if (e.getSource().equals(this.button)) {
             // 1、先获得转化数据
             var num1 = new Complex(Integer.parseInt(this.complex1.getTextField1().getText()), Integer.parseInt(this.complex1.getTextField2().getText()));
             var num2 = new Complex(Integer.parseInt(this.complex2.getTextField1().getText()), Integer.parseInt(this.complex2.getTextField2().getText()));
             var num3 = new Complex(Integer.parseInt(this.complex3.getTextField1().getText()), Integer.parseInt(this.complex3.getTextField2().getText()));
             // 2、根据选项的按钮进行计算
+            var res = this.calculate(num1, num2, num3);
             // 3、将答案返回回来
+            this.complex4.getTextField1().setText("" + res.getRealNumber());
+            this.complex4.getTextField2().setText("" + res.getImaginaryNumber());
         }
     }
-
+    // FIXME: 计算方法没有完善
+    private Complex calculate(Complex complex1, Complex complex2, Complex complex3) {
+        switch (this.box1.getSelectedIndex()) {
+            case 0:
+                var num1 = complex1.add(complex2);
+                if (this.box2.getSelectedIndex() == 0) {
+                    return num1.add(complex3);
+                } else if (this.box2.getSelectedIndex() == 1) {
+                    return num1.delete(complex3);
+                } else if (this.box2.getSelectedIndex() == 2) {
+                    return null;
+                }
+                break;
+            case 1:
+                var num2 = complex1.delete(complex2);
+                break;
+        }
+    }
     public static void main(String[] args) {
         new ContentJFrame();
     }

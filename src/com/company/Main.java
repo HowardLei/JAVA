@@ -53,4 +53,5 @@ public class Main {
             return "不同";
         }
     }
+
 }
