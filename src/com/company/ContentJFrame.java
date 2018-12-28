@@ -3,6 +3,7 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.*;
 
 public class ContentJFrame extends JFrame implements ActionListener {
 
@@ -73,11 +74,12 @@ public class ContentJFrame extends JFrame implements ActionListener {
             final var num1 = new Complex(Double.parseDouble(this.complex1.getTextField1().getText()), Double.parseDouble(this.complex1.getTextField2().getText()));
             final var num2 = new Complex(Double.parseDouble(this.complex2.getTextField1().getText()), Double.parseDouble(this.complex2.getTextField2().getText()));
             final var num3 = new Complex(Double.parseDouble(this.complex3.getTextField1().getText()), Double.parseDouble(this.complex3.getTextField2().getText()));
+            var numberFormat = new DecimalFormat("0.000");
             // 2、根据选项的按钮进行计算
             var res = this.calculate(num1, num2, num3);
             // 3、将答案返回回来
-            this.complex4.getTextField1().setText("" + res.getRealNumber());
-            this.complex4.getTextField2().setText("" + res.getImaginaryNumber());
+            this.complex4.getTextField1().setText("" + numberFormat.format(res.getRealNumber()));
+            this.complex4.getTextField2().setText("" + numberFormat.format(res.getImaginaryNumber()));
         }
     }
 
@@ -87,6 +89,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
             case 0:
                 num1 = complex1.add(complex2);
                 num1 = getSelectedOptions(num1, complex3);
+                break;
             case 1:
                 num1 = complex1.delete(complex2);
                 num1 = getSelectedOptions(num1, complex3);
@@ -98,6 +101,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
             case 3:
                 num1 = complex1.divide(complex2);
                 num1 = getSelectedOptions(num1, complex3);
+                break;
             default:
                 throw new NumberFormatException("输入格式异常");
         }

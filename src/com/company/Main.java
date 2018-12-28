@@ -62,6 +62,6 @@ class extension {
     private double a;
     private double b;
     public extension(String a) throws NumberFormatException {
-        a.matches("");
+        a.matches("^(\\-|\\+)?\\d+(\\.\\d+)?$");
     }
 }

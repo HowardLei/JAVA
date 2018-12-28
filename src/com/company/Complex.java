@@ -16,6 +16,7 @@ public class Complex implements Comparable<Complex> {
      * @param s 需要进行构造的字符串
      */
     public Complex(String s) throws NumberFormatException {
+        // FIXME:
         if (s.matches("\\d+\\+\\d+i")) {
             String[] arr = s.split("\\+");
             this.realNumber = Double.parseDouble(arr[0]);
