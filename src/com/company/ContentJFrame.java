@@ -1,14 +1,14 @@
 package com.company;
 
 import javax.swing.*;
-import javax.swing.text.AbstractDocument;
 import java.awt.*;
 import java.awt.event.*;
 
 public class ContentJFrame extends JFrame implements ActionListener {
 
     private JComplex complex1, complex2, complex3, complex4;
-    private JComboBox<String> box1, box2;
+    private JComboBox<String> box1;
+    private JComboBox<String> box2;
     private JButton button;
 
     public ContentJFrame() {
@@ -17,10 +17,10 @@ public class ContentJFrame extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
-        this.setBounds(100, 100, 300, 300);
-        this.box1 = new JComboBox<String>();
+        this.setBounds(100, 100, 280, 300);
+        this.box1 = new JComboBox<>();
         container.add(box1);
-        this.box2 = new JComboBox<String>();
+        this.box2 = new JComboBox<>();
         container.add(box2);
         this.setComplexData(container);
         this.button = new JButton("=");
@@ -28,13 +28,6 @@ public class ContentJFrame extends JFrame implements ActionListener {
         this.button.addActionListener(this);
     }
 
-    private void setFrame() {
-        int margin = 10;
-        this.complex1.setBounds(30, 0, 250, margin);
-        this.complex2.setBounds(30, margin , 250, margin);
-        this.complex3.setBounds(30, margin * 3, 250, margin);
-        this.complex4.setBounds(30, margin * 5, 250, margin);
-    }
     /**
      * 设置复数框中的数据
      * @param container 需要存储数据的容器
@@ -64,7 +57,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
     }
 
     private void setButtonData(JComboBox<String> box) {
-        String[] arr = {"+", "-", "*", "/"};
+        final String[] arr = {"+", "-", "*", "/"};
         for (String s : arr) {
             box.addItem(s);
         }
@@ -77,9 +70,9 @@ public class ContentJFrame extends JFrame implements ActionListener {
         // 当点击按钮的时候，执行下边的方法
         if (e.getSource().equals(this.button)) {
             // 1、先获得转化数据
-            var num1 = new Complex(Integer.parseInt(this.complex1.getTextField1().getText()), Integer.parseInt(this.complex1.getTextField2().getText()));
-            var num2 = new Complex(Integer.parseInt(this.complex2.getTextField1().getText()), Integer.parseInt(this.complex2.getTextField2().getText()));
-            var num3 = new Complex(Integer.parseInt(this.complex3.getTextField1().getText()), Integer.parseInt(this.complex3.getTextField2().getText()));
+            final var num1 = new Complex(Double.parseDouble(this.complex1.getTextField1().getText()), Double.parseDouble(this.complex1.getTextField2().getText()));
+            final var num2 = new Complex(Double.parseDouble(this.complex2.getTextField1().getText()), Double.parseDouble(this.complex2.getTextField2().getText()));
+            final var num3 = new Complex(Double.parseDouble(this.complex3.getTextField1().getText()), Double.parseDouble(this.complex3.getTextField2().getText()));
             // 2、根据选项的按钮进行计算
             var res = this.calculate(num1, num2, num3);
             // 3、将答案返回回来
@@ -87,25 +80,47 @@ public class ContentJFrame extends JFrame implements ActionListener {
             this.complex4.getTextField2().setText("" + res.getImaginaryNumber());
         }
     }
-    // FIXME: 计算方法没有完善
-    private Complex calculate(Complex complex1, Complex complex2, Complex complex3) {
+
+    private final Complex calculate(Complex complex1, Complex complex2, Complex complex3) throws NumberFormatException {
+        Complex num1;
         switch (this.box1.getSelectedIndex()) {
             case 0:
-                var num1 = complex1.add(complex2);
-                if (this.box2.getSelectedIndex() == 0) {
-                    return num1.add(complex3);
-                } else if (this.box2.getSelectedIndex() == 1) {
-                    return num1.delete(complex3);
-                } else if (this.box2.getSelectedIndex() == 2) {
-                    return null;
-                }
-                break;
+                num1 = complex1.add(complex2);
+                num1 = getSelectedOptions(num1, complex3);
             case 1:
-                var num2 = complex1.delete(complex2);
+                num1 = complex1.delete(complex2);
+                num1 = getSelectedOptions(num1, complex3);
                 break;
+            case 2:
+                num1 = complex1.multiple(complex2);
+                num1 = getSelectedOptions(num1, complex3);
+                break;
+            case 3:
+                num1 = complex1.divide(complex2);
+                num1 = getSelectedOptions(num1, complex3);
+            default:
+                throw new NumberFormatException("输入格式异常");
+        }
+        return num1;
+    }
+
+    private Complex getSelectedOptions(Complex num1, Complex complex3) throws NumberFormatException {
+        switch (this.box2.getSelectedIndex()) {
+            case 0:
+                return num1.add(complex3);
+            case 1:
+                return num1.delete(complex3);
+            case 2:
+                return num1.multiple(complex3);
+            case 3:
+                return num1.divide(complex3);
+            default:
+                throw new NumberFormatException("输入数据异常");
         }
     }
+
     public static void main(String[] args) {
         new ContentJFrame();
     }
+
 }

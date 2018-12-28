@@ -2,10 +2,10 @@ package com.company;
 
 public class Complex implements Comparable<Complex> {
 
-    private int realNumber;
-    private int imaginaryNumber;
+    private double realNumber;
+    private double imaginaryNumber;
 
-    public Complex(int realNumber, int imaginaryNumber) {
+    public Complex(double realNumber, double imaginaryNumber) {
         this.imaginaryNumber = imaginaryNumber;
         this.realNumber = realNumber;
     }
@@ -18,14 +18,14 @@ public class Complex implements Comparable<Complex> {
     public Complex(String s) throws NumberFormatException {
         if (s.matches("\\d+\\+\\d+i")) {
             String[] arr = s.split("\\+");
-            this.realNumber = Integer.parseInt(arr[0]);
+            this.realNumber = Double.parseDouble(arr[0]);
             arr[1] = arr[1].substring(0, arr[1].length() - 1);
-            this.imaginaryNumber = Integer.parseInt(arr[1]);
+            this.imaginaryNumber = Double.parseDouble(arr[1]);
         } else if (s.matches("\\d+\\-\\d+i")) {
             String[] arr = s.split("\\-");
-            this.realNumber = Integer.parseInt(arr[0]);
+            this.realNumber = Double.parseDouble(arr[0]);
             arr[1] = arr[1].substring(0, arr[1].length() - 1);
-            this.imaginaryNumber = -Integer.parseInt(arr[1]);
+            this.imaginaryNumber = -Double.parseDouble(arr[1]);
         } else {
             throw new NumberFormatException("输入格式错误");
         }
@@ -45,11 +45,11 @@ public class Complex implements Comparable<Complex> {
         this(0, 0);
     }
 
-    public int getRealNumber() {
+    public double getRealNumber() {
         return realNumber;
     }
 
-    public int getImaginaryNumber() {
+    public double getImaginaryNumber() {
         return imaginaryNumber;
     }
 
@@ -104,16 +104,27 @@ public class Complex implements Comparable<Complex> {
         return res;
     }
 
+    /**
+     * 复数乘法
+     * @param obj 乘数
+     * @return 积
+     * */
     public Complex multiple(Complex obj) {
         var real = this.realNumber * obj.realNumber - this.imaginaryNumber * obj.imaginaryNumber;
         var image = this.imaginaryNumber * obj.realNumber + this.realNumber * obj.imaginaryNumber;
         return new Complex(real, image);
     }
 
+    /**
+     * 复数除法
+     * @param obj 除数
+     * @return 商
+     */
     public Complex divide(Complex obj) {
         var down = Math.pow(obj.realNumber, 2) + Math.pow(obj.imaginaryNumber, 2);
-        var real = this.realNumber * obj.realNumber + this.imaginaryNumber * obj.imaginaryNumber;
-        return null;
+        var realUP = this.realNumber * obj.realNumber + this.imaginaryNumber * obj.imaginaryNumber;
+        var imageUP = this.imaginaryNumber * obj.realNumber - this.realNumber * obj.imaginaryNumber;
+        return new Complex(realNumber / down, imageUP / down);
     }
 
     @Override
