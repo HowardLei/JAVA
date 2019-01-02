@@ -8,20 +8,20 @@ import java.text.*;
 public class ContentJFrame extends JFrame implements ActionListener {
 
     private JComplex complex1, complex2, complex3, complex4;
-    private JComboBox<String> box1;
-    private JComboBox<String> box2;
+    private JComboBox<String> box1, box2;
     private JButton button;
+    private static String[] choices = {"+", "-", "*", "/"};
 
-    public ContentJFrame() {
+    private ContentJFrame() {
         super("复数表达式计算");
-        Container container = this.getContentPane();
+        var container = this.getContentPane();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setBounds(100, 100, 280, 300);
-        this.box1 = new JComboBox<>();
+        this.box1 = new JComboBox<>(choices);
         container.add(box1);
-        this.box2 = new JComboBox<>();
+        this.box2 = new JComboBox<>(choices);
         container.add(box2);
         this.setComplexData(container);
         this.button = new JButton("=");
@@ -43,25 +43,21 @@ public class ContentJFrame extends JFrame implements ActionListener {
         container.add(complex2);
 
         container.add(this.box1);
-        this.setButtonData(box1);
+        this.setComboBoxData(this.box1);
 
         this.complex3 = new JComplex();
         this.complex3.setVisible(true);
         container.add(complex3);
 
         container.add(this.box2);
-        this.setButtonData(box2);
+        this.setComboBoxData(this.box2);
 
         this.complex4 = new JComplex();
         this.complex4.setVisible(true);
         container.add(complex4);
     }
 
-    private void setButtonData(JComboBox<String> box) {
-        final String[] arr = {"+", "-", "*", "/"};
-        for (String s : arr) {
-            box.addItem(s);
-        }
+    private void setComboBoxData(JComboBox<String> box) {
         this.getContentPane().add(box);
         box.addActionListener(this);
     }
@@ -83,7 +79,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
         }
     }
 
-    private final Complex calculate(Complex complex1, Complex complex2, Complex complex3) throws NumberFormatException {
+    private Complex calculate(Complex complex1, Complex complex2, Complex complex3) throws NumberFormatException {
         Complex num1;
         switch (this.box1.getSelectedIndex()) {
             case 0:

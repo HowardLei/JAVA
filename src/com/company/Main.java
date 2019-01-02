@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.regex.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -56,12 +54,4 @@ public class Main {
         }
     }
 
-}
-
-class extension {
-    private double a;
-    private double b;
-    public extension(String a) throws NumberFormatException {
-        a.matches("^(\\-|\\+)?\\d+(\\.\\d+)?$");
-    }
 }
