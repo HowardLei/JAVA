@@ -12,7 +12,7 @@ public class Main {
             number1 = new Complex(0, 0);
             System.out.println(number1);
         }
-        Complex number2 = new Complex(5, 3);
+        var number2 = new Complex(5, 3);
         number1 = number.add(number2);
         System.out.println("number + number2 的结果为：" + number1.toString());
         var number3 = new Complex(number);

@@ -107,9 +107,10 @@ public class Complex implements Comparable<Complex> {
 
     /**
      * 复数乘法
+     *
      * @param obj 乘数
      * @return 积
-     * */
+     */
     public Complex multiple(Complex obj) {
         var real = this.realNumber * obj.realNumber - this.imaginaryNumber * obj.imaginaryNumber;
         var image = this.imaginaryNumber * obj.realNumber + this.realNumber * obj.imaginaryNumber;
@@ -118,6 +119,7 @@ public class Complex implements Comparable<Complex> {
 
     /**
      * 复数除法
+     *
      * @param obj 除数
      * @return 商
      */
