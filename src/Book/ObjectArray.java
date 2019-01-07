@@ -10,12 +10,14 @@ public class ObjectArray {
             }
         }
     }
+
     /**
      * 数组的合并
+     *
      * @param value1 需要合并的第一个数组
      * @param value2 需要合并的第二个数组
      * @return 合并完成的数组
-     * */
+     */
     public static Object[] concat(Object value1[], Object value2[]) {
         if (value1 == null && value2 == null) {
             return null;
@@ -44,7 +46,7 @@ public class ObjectArray {
         for (int j = 0; j < a.length; j++) {
             a[j] = j;
         }
-        for (Integer integer: a) {
+        for (Integer integer : a) {
             System.out.println(integer);
         }
         Integer[] b = new Integer[4];
@@ -52,7 +54,7 @@ public class ObjectArray {
             b[i] = i + a[a.length - 1];
         }
         Object[] array = concat(a, b);
-        for (Object s: array) {
+        for (var s : array) {
             System.out.println(s);
         }
     }

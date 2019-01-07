@@ -10,7 +10,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
     private JComplex complex1, complex2, complex3, complex4;
     private JComboBox<String> box1, box2;
     private JButton button;
-    private static String choices[] = {"+", "-", "*", "/"};
+    private static final String choices[] = {"+", "-", "*", "/"};
 
     private ContentJFrame() {
         super("复数表达式计算");
@@ -23,7 +23,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
         container.add(box1);
         this.box2 = new JComboBox<>(choices);
         container.add(box2);
-        this.setComplexData(container);
+        this.setComplexData();
         this.button = new JButton("=");
         container.add(this.button);
         this.button.addActionListener(this);
@@ -31,9 +31,9 @@ public class ContentJFrame extends JFrame implements ActionListener {
 
     /**
      * 设置复数框中的数据
-     * @param container 需要存储数据的容器
      * */
-    private void setComplexData(Container container) {
+    private void setComplexData() {
+        var container = this.getContentPane();
         this.complex1 = new JComplex();
         this.complex1.setVisible(true);
         container.add(complex1);
