@@ -7,7 +7,9 @@ package Book;
 * 4、每当要执行一个线程体的时候，需要先创建一个线程对象，重写他的 run 方法，在对线程对象调用 start 方法即可。（注意：调用 start 方法并不意味着该线程就能立刻执行，只是该线程的状态为 RUNNABLE ，在 JVM 中他正在执行，但可能等操作系统给他的其他资源（例如处理器）。）
 * */
 public class NumberThread extends Thread {
+
     private int first;
+
     public NumberThread(String name, int first) {
         super(name);
         this.first = first;
@@ -32,10 +34,11 @@ public class NumberThread extends Thread {
         var firstThread = new NumberThread("奇数线程", 1);
         var secondThread = new NumberThread("偶数线程", 2);
         var demoThread = new NumberThread();
+        var thread = new NumberThread();
         demoThread.start();
+        firstThread.start();
+        secondThread.start();
         System.out.println(demoThread.getState());
-//        firstThread.run();
-//        secondThread.run();
         System.out.println("Thread.activeCount() = " + Thread.activeCount());
     }
 }

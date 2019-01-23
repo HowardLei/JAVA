@@ -10,7 +10,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
     private JComplex complex1, complex2, complex3, complex4;
     private JComboBox<String> box1, box2;
     private JButton button;
-    private static final String choices[] = {"+", "-", "*", "/"};
+    private static final String[] choices = {"+", "-", "*", "/"};
 
     private ContentJFrame() {
         super("复数表达式计算");
