@@ -59,7 +59,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
 
     private void setComboBoxData(JComboBox<String> box) {
         this.getContentPane().add(box);
-        box.addActionListener(this);
+        box.addActionListener((var event) ->{});
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
             final var num3 = new Complex(Double.parseDouble(this.complex3.getTextField1().getText()), Double.parseDouble(this.complex3.getTextField2().getText()));
             var numberFormat = new DecimalFormat("0.000");
             // 2、根据选项的按钮进行计算
-            var res = this.calculate(num1, num2, num3);
+            var res = calculate(num1, num2, num3);
             // 3、将答案返回回来
             this.complex4.getTextField1().setText("" + numberFormat.format(res.getRealNumber()));
             this.complex4.getTextField2().setText("" + numberFormat.format(res.getImaginaryNumber()));

@@ -9,7 +9,7 @@ public class NumberRunnable implements Runnable {
 
     @Override
     public void run() {
-        for (var i = this.number; i < 50; i++) {
+        for (var i = this.number; i < this.number + 100; i++) {
             System.out.println(i);
         }
     }
