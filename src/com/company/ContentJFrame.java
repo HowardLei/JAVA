@@ -15,7 +15,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
     private ContentJFrame() {
         super("复数表达式计算");
         var container = this.getContentPane();
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setBounds(100, 100, 280, 300);
@@ -59,7 +59,8 @@ public class ContentJFrame extends JFrame implements ActionListener {
 
     private void setComboBoxData(JComboBox<String> box) {
         this.getContentPane().add(box);
-        box.addActionListener((var event) ->{});
+        box.addActionListener((var event) -> {
+        });
     }
 
     @Override
