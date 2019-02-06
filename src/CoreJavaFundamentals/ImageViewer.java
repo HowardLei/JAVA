@@ -15,7 +15,6 @@ public class ImageViewer {
             frame.setVisible(true);
         });
     }
-
 }
 
 class ImageViewerFrame extends JFrame {
@@ -34,11 +33,11 @@ class ImageViewerFrame extends JFrame {
         chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File("."));
         // 创建一个 menuBar
-        var menubar = new JMenuBar();
-        setJMenuBar(menubar);
+        var menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
         // 创建菜单
         var menu = new JMenu("menu");
-        menubar.add(menu);
+        menuBar.add(menu);
         // 向 menu 当中添加项目
         var openItem = new JMenuItem("Open");
         menu.add(openItem);
@@ -53,6 +52,7 @@ class ImageViewerFrame extends JFrame {
         menu.add(exitItem);
         exitItem.addActionListener((ActionEvent event) -> {
             System.exit(0);
+            System.out.println();
         });
     }
 
