@@ -2,15 +2,12 @@ package com.company;
 
 public class Sorted<T>{
 
-    public static <T> void QuickSort(T[] values) {
-        var left = 0;
-        var right = values.length - 1;
+    public static <T> void QuickSort(T[] value, int left, int right) {
         if (left < right) {
-            var value = partion(values);
         }
     }
 
-    public static <T> T partion(T[] values) {
-        return null;
+    public static void main(String[] args) {
+
     }
 }
