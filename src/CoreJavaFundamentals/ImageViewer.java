@@ -55,5 +55,4 @@ class ImageViewerFrame extends JFrame {
             System.out.println();
         });
     }
-
 }
