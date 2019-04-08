@@ -8,28 +8,28 @@ public class Sorted<T extends Number> {
         this.numbers = arr;
     }
 
-    public static <T> void QuickSort(T[] value, int left, int right) {
+    public <T extends Number> void QuickSort(int left, int right) {
         if (left < right) {
             var Left = left;
             var Right = right;
-            var temp = value[1];
-            var element = value[left];
+            var temp = this.numbers[1];
+            var element = this.numbers[left];
             while (left < right) {
                 // 判断的时候记得调用 compareTo 方法
-                while (value[right] && left < right) {
+                while (numbers[right].intValue() == 0 && left < right) {
                     right--;
                 }
-                while (left < right &&) {
+                while (left < right) {
                     left++;
                 }
                 if (left < right) {
-                    temp = value[left];
-                    value[left] = value[right];
-                    value[right] = temp;
+                    temp = numbers[left];
+                    numbers[left] = numbers[right];
+                    numbers[right] = temp;
                 }
             }
-            QuickSort(value, Left, left - 1);
-            QuickSort(value, right + 1, Right);
+            QuickSort(Left, left - 1);
+            QuickSort(right + 1, Right);
         }
     }
 
