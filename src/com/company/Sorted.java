@@ -34,7 +34,7 @@ public class Sorted<T extends Number> {
 
     public static void main(String[] args) {
         var demo = new Integer[]{2, 32, 323, 3, 234, 342, 4};
-        var array = new Sorted<>(demo);
+        var array = new Sorted(demo);
         for (Integer integer : demo) {
             System.out.println(integer);
         }
@@ -44,4 +44,5 @@ public class Sorted<T extends Number> {
             System.out.println(number);
         }
     }
+
 }
