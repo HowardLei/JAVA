@@ -1,5 +1,7 @@
 package com.company;
 
+import javax.lang.model.SourceVersion;
+
 public class Sorted<T extends Number> {
     private T[] numbers;
 
@@ -32,17 +34,40 @@ public class Sorted<T extends Number> {
         }
     }
 
-    public static void main(String[] args) {
-        var demo = new Integer[]{2, 32, 323, 3, 234, 342, 4};
-        var array = new Sorted(demo);
-        for (Integer integer : demo) {
-            System.out.println(integer);
+    public static int removeDuplicates(int[] nums) {
+        if (nums.length == 0 || nums.length == 1) {
+            return nums.length;
         }
-        System.out.println("------");
-        array.QuickSort(0, demo.length - 1);
-        for (var number : demo) {
-            System.out.println(number);
+        int temp = nums.length;
+        int t = nums[0];
+        for (int i = 1; i < temp;) {
+            if (t == nums[i]) {
+                temp--;
+                for (int s = i; s <= temp - 1; s++) {
+                    nums[s] = nums[s + 1];
+                }
+            } else {
+                t = nums[i];
+                i++;
+            }
+        }
+        return temp;
+    }
+    public static void main(String[] args)  {
+//        var demo = new Integer[]{2, 32, 323, 3, 234, 342, 4};
+//        var array = new Sorted(demo);
+//        for (Integer integer : demo) {
+//            System.out.println(integer);
+//        }
+//        System.out.println("------");
+//        array.QuickSort(0, demo.length - 1);
+//        for (var number : demo) {
+//            System.out.println(number);
+//        }
+        var value = new int[]{0,1};
+        var res = removeDuplicates(value);
+        for (int i = 0; i < res; i++) {
+            System.out.println("value[" + i + "] = " + value[i]);
         }
     }
-
 }
