@@ -1,5 +1,9 @@
 package com.company;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Stack;
+
 public class Sorted<T extends Number> {
     private T[] numbers;
 
@@ -52,21 +56,17 @@ public class Sorted<T extends Number> {
         }
         return temp;
     }
-    public static void main(String[] args)  {
-//        var demo = new Integer[]{2, 32, 323, 3, 234, 342, 4};
-//        var array = new Sorted(demo);
-//        for (Integer integer : demo) {
-//            System.out.println(integer);
-//        }
-//        System.out.println("------");
-//        array.QuickSort(0, demo.length - 1);
-//        for (var number : demo) {
-//            System.out.println(number);
-//        }
-        var value = new int[]{0,1};
-        var res = removeDuplicates(value);
-        for (int i = 0; i < res; i++) {
-            System.out.println("value[" + i + "] = " + value[i]);
+    /**
+     * 只出现一次的数字
+     * @param nums 需要筛选的数组
+     * @return 唯一出现的数字
+     * */
+    public static int singleNumber(int[] nums) {
+        for (var i = 1; i < nums.length; i++) {
+            nums[0] ^= nums[i];
         }
+        return nums[0];
+    }
+    public static void main(String[] args)  {
     }
 }
