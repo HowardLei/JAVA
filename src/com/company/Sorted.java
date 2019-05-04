@@ -1,8 +1,7 @@
 package com.company;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 public class Sorted<T extends Number> {
     private T[] numbers;
@@ -66,6 +65,9 @@ public class Sorted<T extends Number> {
             nums[0] ^= nums[i];
         }
         return nums[0];
+    }
+    public static int[] intersect(int[] nums1, int[] nums2) {
+        return null;
     }
     public static void main(String[] args)  {
     }
