@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Sorted<T extends Number> {
@@ -66,9 +65,52 @@ public class Sorted<T extends Number> {
         }
         return nums[0];
     }
+    /**
+     * 两个数组的交集 II
+     * @param nums1 第一个数组
+     * @param nums2 第二个数组
+     * @return 所得的交集数组
+     * */
     public static int[] intersect(int[] nums1, int[] nums2) {
-        return null;
+        Hashtable<Integer, Integer> table1 = init(nums1);
+        var list = new ArrayList<Integer>();
+        Hashtable<Integer, Integer> table2 = init(nums2);
+        table1.forEach((Integer key, Integer value) -> {
+            if (table2.containsKey(key)) {
+                for (var i = 0; i < Math.min(value, table2.get(key)); i++) {
+                    list.add(key);
+                }
+            }
+        });
+        var values = new int[list.size()];
+        for (var i = 0; i < values.length; i++) {
+            values[i] = list.get(i);
+        }
+        return values;
     }
+    /**
+     * 将数组当中的元素转化为 <数组元素:在数组中出现次数> 的字典
+     * @param nums 需要转化的数组
+     * @return 转化成功的字典
+     * */
+    private static Hashtable<Integer, Integer> init(int[] nums) {
+        var table = new Hashtable<Integer, Integer>();
+        for (int i : nums) {
+            if (table.containsKey(i)) {
+                var value = table.get(i);
+                table.put(i, ++value);
+            } else {
+                table.put(i, 1);
+            }
+        }
+        return table;
+    }
+
     public static void main(String[] args)  {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(2, 3);
+        System.out.println(map);
+        map.replace(2, 4);
+        System.out.println(map);
     }
 }
