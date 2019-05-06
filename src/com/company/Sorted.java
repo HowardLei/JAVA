@@ -38,9 +38,9 @@ public class Sorted<T extends Number> {
         if (nums.length == 0 || nums.length == 1) {
             return nums.length;
         }
-        int temp = nums.length;
-        int t = nums[0];
-        for (int i = 1; i < temp;) {
+        var temp = nums.length;
+        var t = nums[0];
+        for (var i = 1; i < temp;) {
             if (t == nums[i]) {
                 temp--;
                 for (int s = i; s <= temp - 1; s++) {
@@ -95,7 +95,7 @@ public class Sorted<T extends Number> {
      * */
     private static HashMap<Integer, Integer> init(int[] nums) {
         var map = new HashMap<Integer, Integer>();
-        for (int i : nums) {
+        for (var i : nums) {
             if (map.containsKey(i)) {
                 var value = map.get(i);
                 map.put(i, ++value);
@@ -113,7 +113,7 @@ public class Sorted<T extends Number> {
     public static int[] plusOne(int[] digits) {
         digits[digits.length - 1] += 1;
         var stack = new Stack<Integer>();
-        for (int digit : digits) {
+        for (var digit : digits) {
             stack.add(digit);
         }
         var iter = stack.iterator();
@@ -128,7 +128,7 @@ public class Sorted<T extends Number> {
      * */
     public static void moveZeroes(int[] nums) {
         var list = new ArrayList<Integer>();
-        for (int i : nums) {
+        for (var i : nums) {
             if (i != 0) {
                 list.add(i);
             }
