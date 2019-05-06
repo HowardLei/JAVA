@@ -72,12 +72,12 @@ public class Sorted<T extends Number> {
      * @return 所得的交集数组
      * */
     public static int[] intersect(int[] nums1, int[] nums2) {
-        Hashtable<Integer, Integer> table1 = init(nums1);
+        var map1 = init(nums1);
+        var map2 = init(nums2);
         var list = new ArrayList<Integer>();
-        Hashtable<Integer, Integer> table2 = init(nums2);
-        table1.forEach((Integer key, Integer value) -> {
-            if (table2.containsKey(key)) {
-                for (var i = 0; i < Math.min(value, table2.get(key)); i++) {
+        map1.forEach((Integer key, Integer value) -> {
+            if (map2.containsKey(key)) {
+                for (var i = 0; i < Math.min(value, map2.get(key)); i++) {
                     list.add(key);
                 }
             }
@@ -93,24 +93,55 @@ public class Sorted<T extends Number> {
      * @param nums 需要转化的数组
      * @return 转化成功的字典
      * */
-    private static Hashtable<Integer, Integer> init(int[] nums) {
-        var table = new Hashtable<Integer, Integer>();
+    private static HashMap<Integer, Integer> init(int[] nums) {
+        var map = new HashMap<Integer, Integer>();
         for (int i : nums) {
-            if (table.containsKey(i)) {
-                var value = table.get(i);
-                table.put(i, ++value);
+            if (map.containsKey(i)) {
+                var value = map.get(i);
+                map.put(i, ++value);
             } else {
-                table.put(i, 1);
+                map.put(i, 1);
             }
         }
-        return table;
+        return map;
     }
-
+    /**
+     * 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
+     * @param digits 需要加 1 的数组
+     * @return 加 1 完成的数组
+     * */
+    public static int[] plusOne(int[] digits) {
+        digits[digits.length - 1] += 1;
+        var stack = new Stack<Integer>();
+        for (int digit : digits) {
+            stack.add(digit);
+        }
+        var iter = stack.iterator();
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
+        return null;
+    }
+    /**
+     * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+     * @param nums 原数组
+     * */
+    public static void moveZeroes(int[] nums) {
+        var list = new ArrayList<Integer>();
+        for (int i : nums) {
+            if (i != 0) {
+                list.add(i);
+            }
+        }
+        var newNums = new int[nums.length];
+        var iter = list.iterator();
+        for (var i = 0; i < newNums.length; i++) {
+            nums[i] = iter.hasNext() ? iter.next() : 0;
+        }
+        nums = newNums;
+    }
     public static void main(String[] args)  {
-        var map = new HashMap<Integer, Integer>();
-        map.put(2, 3);
-        System.out.println(map);
-        map.replace(2, 4);
-        System.out.println(map);
+        var values = new int[]{2, 3, 0, 1, 2};
+        moveZeroes(values);
     }
 }
