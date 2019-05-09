@@ -140,7 +140,7 @@ public class Sorted<T extends Number> {
         }
         nums = newNums;
     }
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         var values = new int[]{2, 3, 0, 1, 2};
         moveZeroes(values);
     }
