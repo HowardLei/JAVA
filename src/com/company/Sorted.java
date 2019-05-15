@@ -140,6 +140,39 @@ public class Sorted<T extends Number> {
         }
         nums = newNums;
     }
+    /**
+     * 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+     * @param s 需要查找的字符串
+     * @return 第一个不重复字符的索引，如果没有该索引，则返回 -1
+     * */
+    public static int firstUniqChar(String s) {
+        var chars = s.toCharArray();
+        var map = init(chars);
+        var list = new ArrayList<Character>();
+        for (var c : chars) {
+            if (list.contains(c)) {
+                map.put(c, false);
+            } else {
+                list.add(c);
+            }
+        }
+        for (var i = 0; i < chars.length; i++) {
+            if (map.get(chars[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    /**
+     * 将数组元素转化为<字符串当中的
+     * */
+    private static HashMap<Character, Boolean> init(char[] chars) {
+        var map = new HashMap<Character, Boolean>();
+        for (var c : chars) {
+            map.put(c, true);
+        }
+        return map;
+    }
     public static void main(String[] args) {
         var values = new int[]{2, 3, 0, 1, 2};
         moveZeroes(values);
