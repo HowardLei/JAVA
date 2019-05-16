@@ -147,13 +147,12 @@ public class Sorted<T extends Number> {
      * */
     public static int firstUniqChar(String s) {
         var chars = s.toCharArray();
-        var map = init(chars);
-        var list = new ArrayList<Character>();
+        var map = new HashMap<Character, Boolean>();
         for (var c : chars) {
-            if (list.contains(c)) {
+            if (map.containsKey(c)) {
                 map.put(c, false);
             } else {
-                list.add(c);
+                map.put(c, true);
             }
         }
         for (var i = 0; i < chars.length; i++) {
@@ -163,18 +162,10 @@ public class Sorted<T extends Number> {
         }
         return -1;
     }
-    /**
-     * 将数组元素转化为<字符串当中的
-     * */
-    private static HashMap<Character, Boolean> init(char[] chars) {
-        var map = new HashMap<Character, Boolean>();
-        for (var c : chars) {
-            map.put(c, true);
-        }
-        return map;
-    }
     public static void main(String[] args) {
-        var values = new int[]{2, 3, 0, 1, 2};
-        moveZeroes(values);
+//        var values = new int[]{2, 3, 0, 1, 2};
+//        moveZeroes(values);
+        var str = "leetcode";
+        System.out.println(firstUniqChar(str));
     }
 }
