@@ -149,14 +149,10 @@ public class Sorted<T extends Number> {
         var chars = s.toCharArray();
         var map = new HashMap<Character, Boolean>();
         for (var c : chars) {
-            if (map.containsKey(c)) {
-                map.put(c, false);
-            } else {
-                map.put(c, true);
-            }
+            map.put(c, map.containsKey(c));
         }
         for (var i = 0; i < chars.length; i++) {
-            if (map.get(chars[i])) {
+            if (!map.get(chars[i])) {
                 return i;
             }
         }
