@@ -146,21 +146,21 @@ public class Sorted<T extends Number> {
      * @return 第一个不重复字符的索引，如果没有该索引，则返回 -1
      * */
     public static int firstUniqChar(String s) {
-        var chars = s.toCharArray();
         var map = new HashMap<Character, Boolean>();
-        for (var c : chars) {
-            map.put(c, map.containsKey(c));
+        var c = 'a';
+        for (var i = 0; i < s.length(); i++) {
+            c = s.charAt(i);
+            map.put(c,map.containsKey(c));
         }
-        for (var i = 0; i < chars.length; i++) {
-            if (!map.get(chars[i])) {
+        for (var i = 0; i < s.length(); i++) {
+            c = s.charAt(i);
+            if (!map.get(c)) {
                 return i;
             }
         }
         return -1;
     }
     public static void main(String[] args) {
-//        var values = new int[]{2, 3, 0, 1, 2};
-//        moveZeroes(values);
         var str = "leetcode";
         System.out.println(firstUniqChar(str));
     }
