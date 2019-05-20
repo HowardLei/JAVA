@@ -27,8 +27,7 @@ class ImageViewerFrame extends JFrame {
     public ImageViewerFrame() {
         setSize(DEFAULT_WiDTH, DEFAULT_HEIGHT);
         // 创建一个 label
-        label = new JLabel();
-        add(label);
+        add(new JLabel());
         // 创建一个 fileChooser
         chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File("."));

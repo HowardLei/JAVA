@@ -160,6 +160,35 @@ public class Sorted<T extends Number> {
         }
         return -1;
     }
+    /**
+     * 给定一个字符串，验证它是否是回文串。
+     * 标准：只考虑字母和数字字符，可以忽略字母的大小写。
+     * @param s 需要检查的字符串
+     * @return 是否符合标准
+     */
+    public static boolean isPalindrome(String s) {
+        var charArray = s.toLowerCase().toCharArray();
+        if (s.equals(null)) {
+            return true;
+        }
+        var left = 0;
+        var right = s.length() - 1;
+        // 从左到右创建双指针，检测两者之间是否是
+        while (left < right) {
+             if (Character.isLetterOrDigit(charArray[left])) {
+                 if (Character.isLetterOrDigit(charArray[right])) {
+                    if (charArray[left++] != charArray[right--]) {
+                        return false;
+                    }
+                 } else {
+                     right--;
+                 }
+             } else {
+                 left++;
+             }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         var str = "leetcode";
         System.out.println(firstUniqChar(str));
