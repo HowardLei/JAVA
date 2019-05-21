@@ -147,14 +147,12 @@ public class Sorted<T extends Number> {
      * */
     public static int firstUniqChar(String s) {
         var map = new HashMap<Character, Boolean>();
-        var c = 'a';
+        var c = s.toCharArray();
         for (var i = 0; i < s.length(); i++) {
-            c = s.charAt(i);
-            map.put(c,map.containsKey(c));
+            map.put(c[i],map.containsKey(c[i]));
         }
         for (var i = 0; i < s.length(); i++) {
-            c = s.charAt(i);
-            if (!map.get(c)) {
+            if (!map.get(c[i])) {
                 return i;
             }
         }
@@ -167,25 +165,26 @@ public class Sorted<T extends Number> {
      * @return 是否符合标准
      */
     public static boolean isPalindrome(String s) {
-        var charArray = s.toLowerCase().toCharArray();
-        if (s.equals(null)) {
+        // 先判断这个串是否为空，如果为空返回为真串，否则继续判断。
+        if (s.equals(null) || s.equals("")) {
             return true;
         }
+        var charArray = s.toLowerCase().toCharArray();
+        // 创建左右双指针。记录判断字符的位置。
         var left = 0;
         var right = s.length() - 1;
-        // 从左到右创建双指针，检测两者之间是否是
         while (left < right) {
-             if (Character.isLetterOrDigit(charArray[left])) {
-                 if (Character.isLetterOrDigit(charArray[right])) {
+            if (Character.isLetterOrDigit(charArray[left])) {
+                if (Character.isLetterOrDigit(charArray[right])) {
                     if (charArray[left++] != charArray[right--]) {
                         return false;
                     }
-                 } else {
-                     right--;
-                 }
-             } else {
-                 left++;
-             }
+                } else {
+                    right--;
+                }
+            } else {
+                left++;
+            }
         }
         return true;
     }
