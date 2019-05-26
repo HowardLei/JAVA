@@ -105,6 +105,25 @@ public class Sorted<T extends Number> {
         }
         return map;
     }
+    public static int[] twoSum(int[] nums, int target) {
+        var map = new HashMap<Integer, Integer>();
+        var key = 0;
+        var values = new int[2];
+        for (var i = 0; i < nums.length; i++) {
+            key = target - nums[i];
+            if (map.containsKey(key)) {
+                var iter = map.values().iterator();
+                key = 0;
+                while (iter.hasNext()) {
+                    values[key++] = iter.next();
+                }
+                return values;
+            } else {
+                map.put(key, i);
+            }
+        }
+        return null;
+    }
     /**
      * 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
      * @param digits 需要加 1 的数组
