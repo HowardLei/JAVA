@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.lang.model.type.IntersectionType;
 import java.util.*;
 
 public class Sorted<T extends Number> {
@@ -40,7 +41,7 @@ public class Sorted<T extends Number> {
         }
         var temp = nums.length;
         var t = nums[0];
-        for (var i = 1; i < temp;) {
+        for (var i = 1; i < temp; ) {
             if (t == nums[i]) {
                 temp--;
                 for (int s = i; s <= temp - 1; s++) {
@@ -54,23 +55,27 @@ public class Sorted<T extends Number> {
         }
         return temp;
     }
+
     /**
      * 只出现一次的数字
+     *
      * @param nums 需要筛选的数组
      * @return 唯一出现的数字
-     * */
+     */
     public static int singleNumber(int[] nums) {
         for (var i = 1; i < nums.length; i++) {
             nums[0] ^= nums[i];
         }
         return nums[0];
     }
+
     /**
      * 两个数组的交集 II
+     *
      * @param nums1 第一个数组
      * @param nums2 第二个数组
      * @return 所得的交集数组
-     * */
+     */
     public static int[] intersect(int[] nums1, int[] nums2) {
         var map1 = init(nums1);
         var map2 = init(nums2);
@@ -88,11 +93,13 @@ public class Sorted<T extends Number> {
         }
         return values;
     }
+
     /**
      * 将数组当中的元素转化为 <数组元素:在数组中出现次数> 的字典
+     *
      * @param nums 需要转化的数组
      * @return 转化成功的字典
-     * */
+     */
     private static HashMap<Integer, Integer> init(int[] nums) {
         var map = new HashMap<Integer, Integer>();
         for (var i : nums) {
@@ -105,6 +112,13 @@ public class Sorted<T extends Number> {
         }
         return map;
     }
+
+    /***
+     * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+     * @param nums 需要查找的数
+     * @param target 目标值
+     * @return 返回数组的下标
+     */
     public static int[] twoSum(int[] nums, int target) {
         var map = new HashMap<Integer, Integer>();
         var key = 0;
@@ -124,11 +138,13 @@ public class Sorted<T extends Number> {
         }
         return null;
     }
+
     /**
      * 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
+     *
      * @param digits 需要加 1 的数组
      * @return 加 1 完成的数组
-     * */
+     */
     public static int[] plusOne(int[] digits) {
         digits[digits.length - 1] += 1;
         var stack = new Stack<Integer>();
@@ -141,10 +157,12 @@ public class Sorted<T extends Number> {
         }
         return null;
     }
+
     /**
      * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+     *
      * @param nums 原数组
-     * */
+     */
     public static void moveZeroes(int[] nums) {
         var list = new ArrayList<Integer>();
         for (var i : nums) {
@@ -159,16 +177,18 @@ public class Sorted<T extends Number> {
         }
         nums = newNums;
     }
+
     /**
      * 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+     *
      * @param s 需要查找的字符串
      * @return 第一个不重复字符的索引，如果没有该索引，则返回 -1
-     * */
+     */
     public static int firstUniqChar(String s) {
         var map = new HashMap<Character, Boolean>();
         var c = s.toCharArray();
         for (var i = 0; i < s.length(); i++) {
-            map.put(c[i],map.containsKey(c[i]));
+            map.put(c[i], map.containsKey(c[i]));
         }
         for (var i = 0; i < s.length(); i++) {
             if (!map.get(c[i])) {
@@ -177,9 +197,11 @@ public class Sorted<T extends Number> {
         }
         return -1;
     }
+
     /**
      * 给定一个字符串，验证它是否是回文串。
      * 标准：只考虑字母和数字字符，可以忽略字母的大小写。
+     *
      * @param s 需要检查的字符串
      * @return 是否符合标准
      */
@@ -207,6 +229,22 @@ public class Sorted<T extends Number> {
         }
         return true;
     }
+
+    public static String longestCommonPrefix(String[] strs) {
+        var count = strs.length;
+        var minLength = strs[0].length();
+        var map = new HashMap<Character, Boolean>();
+        for (var i = 1; i < count; i++) {
+            if (minLength > strs[i].length()) {
+                minLength = strs[i].length();
+            }
+        }
+        for (var i = 0; i < minLength; i++) {
+            return "";
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         var str = "leetcode";
         System.out.println(firstUniqChar(str));
