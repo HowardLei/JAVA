@@ -14,7 +14,7 @@ public class ConnectMySQL {
         var sqlURL = "jdbc:mysql://localhost:3306/Demo?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone = GMT";
         var sql = "jdbc:mysql://localhost:3306";
         Class.forName("com.mysql.cj.jdbc.Driver");
-        var connection = DriverManager.getConnection(sqlURL, "root", "SweetieCan@0830");
+        Connection connection = DriverManager.getConnection(sqlURL, "root", "SweetieCan@0830");
         System.out.println(connection);
         var statement = connection.createStatement();
         System.out.println(statement);
