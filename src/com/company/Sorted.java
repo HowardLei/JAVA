@@ -4,12 +4,14 @@ import java.util.*;
 
 public class Sorted<T extends Number> {
     private T[] numbers;
-
+    public int[] values;
     Sorted(T[] arr) {
         this.numbers = arr;
     }
-
-    public <T extends Number> void quickSort(int left, int right) {
+    Sorted(int[] values) {
+        this.values = values;
+    }
+    public <T extends Number> void quickSort(int left, int right, int x) {
         if (left < right) {
             var leftPointer = left;
             var rightPointer = right;
@@ -33,6 +35,33 @@ public class Sorted<T extends Number> {
             quickSort(right + 1, rightPointer);
         }
     }
+    public void quickSort(int left, int right) {
+        if (left < right) {
+            int leftPoint = left;
+            int rightPoint = right;
+            int compare = values[left];
+            int temp = 0;
+            while (leftPoint < rightPoint) {
+                while (compare <= values[rightPoint] && leftPoint < rightPoint) {
+                    rightPoint--;
+                }
+                while (compare >= values[leftPoint] && leftPoint < rightPoint) {
+                    leftPoint++;
+                }
+                if (leftPoint < rightPoint) {
+                    temp = values[leftPoint];
+                    values[leftPoint] = values[rightPoint];
+                    values[rightPoint] = temp;
+                }
+            }
+            values[left] = values[leftPoint];
+            values[leftPoint] = compare;
+            quickSort(left, leftPoint - 1);
+            quickSort(rightPoint + 1, right);
+        } else {
+            return;
+        }
+    }
 
     public static int removeDuplicates(int[] nums) {
         if (nums.length == 0 || nums.length == 1) {
@@ -50,7 +79,6 @@ public class Sorted<T extends Number> {
                 t = nums[i];
                 i++;
             }
-
         }
         return temp;
     }
@@ -227,7 +255,11 @@ public class Sorted<T extends Number> {
     }
 
     public static void main(String[] args) {
-        var str = "leetcode";
-        System.out.println(firstUniqChar(str));
+        int[] values = {2, 4, 5, 1, 12, 5, 4};
+        Sorted sorted = new Sorted(values);
+        sorted.quickSort(0, values.length - 1);
+        for (int value : values) {
+            System.out.println(value);
+        }
     }
 }
