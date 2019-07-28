@@ -60,6 +60,7 @@ public class ContentJFrame extends JFrame implements ActionListener {
     private void setComboBoxData(JComboBox<String> box) {
         this.getContentPane().add(box);
         box.addActionListener((var event) -> {
+
         });
     }
 

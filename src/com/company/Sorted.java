@@ -157,14 +157,17 @@ public class Sorted<T extends Number> {
      * @param nums 原数组
      */
     public static void moveZeroes(int[] nums) {
-        var list = new ArrayList<Integer>();
+        var list = new ArrayList<Integer>(nums.length);
+        var iter = list.iterator();
+        iter.forEachRemaining((Integer integer) -> {
+            list.add(integer);
+        });
         for (var i : nums) {
             if (i != 0) {
                 list.add(i);
             }
         }
         var newNums = new int[nums.length];
-        var iter = list.iterator();
         for (var i = 0; i < newNums.length; i++) {
             nums[i] = iter.hasNext() ? iter.next() : 0;
         }
