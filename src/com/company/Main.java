@@ -1,21 +1,28 @@
 package com.company;
 
-public class Main {
+import java.util.Scanner;
 
+public class Main {
     public static void main(String[] args) {
-        var values = new int[]{2, 3, 5, 4, 8};
-        var value = 0;
-        for (var i = 0; i < values.length - 1; i++) {
-            for (var j = 1; j < values.length; j++) {
-                if (values[i] > values[j]) {
-                    value = values[i];
-                    values[i] = values[j];
-                    values[j] = value;
-                }
-            }
+        var in = new Scanner(System.in);
+        System.out.println("Enter a size: (SMALL, MEDIUM, LARGE, EXTRA_LARGE)");
+        var input = in.next().toUpperCase();
+        var size = Enum.valueOf(Size.class, input);
+        System.out.println("size = " + size);
+        System.out.println("size.getAbbreviation() = " + size.getAbbreviation());
+        if (size == Size.EXTRA_LARGE) {
+            System.out.println("Good job--you paid attention to the _.");
         }
-        for (var i = 0; i < values.length; i++) {
-            System.out.println(values[i]);
-        }
+    }
+}
+enum Size {
+    SMALL("S"), MEDIUM("M"), LARGE("L"), EXTRA_LARGE("XL");
+    private String abbreviation;
+    Size(String abbreviation) {
+        this.abbreviation = abbreviation;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
     }
 }

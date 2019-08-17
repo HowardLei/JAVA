@@ -33,8 +33,16 @@ public class Sorted<T extends Number> {
             }
             quickSort(leftPointer, left - 1);
             quickSort(right + 1, rightPointer);
+        } else {
+            return;
         }
     }
+
+    /***
+     * 正确的快速排序的实现
+     * @param left 需要排序数组的左边界
+     * @param right 需要排序数组的右边界
+     */
     public void quickSort(int left, int right) {
         if (left < right) {
             int leftPoint = left;
@@ -255,7 +263,7 @@ public class Sorted<T extends Number> {
     }
 
     public static void main(String[] args) {
-        int[] values = {2, 4, 5, 1, 12, 5, 4};
+        int[] values = {2, 4, 51, 7, 9, 3, 10, 8, 34, 6, 9, 12};
         Sorted sorted = new Sorted(values);
         sorted.quickSort(0, values.length - 1);
         for (int value : values) {
