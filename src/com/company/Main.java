@@ -4,25 +4,31 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        var in = new Scanner(System.in);
-        System.out.println("Enter a size: (SMALL, MEDIUM, LARGE, EXTRA_LARGE)");
-        var input = in.next().toUpperCase();
-        var size = Enum.valueOf(Size.class, input);
-        System.out.println("size = " + size);
-        System.out.println("size.getAbbreviation() = " + size.getAbbreviation());
-        if (size == Size.EXTRA_LARGE) {
-            System.out.println("Good job--you paid attention to the _.");
+        var input = new Scanner(System.in);
+        var length = input.nextInt();
+        var len = 0;
+        var demo1s = new Demo1[length];
+        var time = new int[length];
+        var allTime = 0;
+        var sortedDemo1s = new Demo1[length];
+        for (var i = 0; i < length; i++) {
+            var a = input.nextInt();
+            var t = input.nextInt();
+            demo1s[i] = new Demo1(a, t);
+            time[i] = a * t;
+            len += (0.5 * a * t * t);
+            allTime += t;
+        }
+        for (var i = 0; i < length; i++) {
         }
     }
 }
-enum Size {
-    SMALL("S"), MEDIUM("M"), LARGE("L"), EXTRA_LARGE("XL");
-    private String abbreviation;
-    Size(String abbreviation) {
-        this.abbreviation = abbreviation;
-    }
 
-    public String getAbbreviation() {
-        return abbreviation;
+class Demo1 {
+    public int a;
+    public int b;
+    Demo1(int a, int b) {
+        this.a = a;
+        this.b = b;
     }
 }

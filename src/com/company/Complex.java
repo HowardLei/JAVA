@@ -16,7 +16,6 @@ public class Complex implements Comparable<Complex> {
      * @param s 需要进行构造的字符串
      */
     public Complex(String s) throws NumberFormatException {
-        // FIXME: 正则表达式还不对，匹配不上复数计算式
         if (s.matches("\\d+\\+\\d+i")) {
             String[] arr = s.split("\\+");
             this.realNumber = Double.parseDouble(arr[0]);
@@ -165,5 +164,4 @@ public class Complex implements Comparable<Complex> {
         double num2 = Math.sqrt(Math.pow(number.realNumber, 2) + Math.pow(number.imaginaryNumber, 2));
         return Double.compare(num1, num2);
     }
-
 }
