@@ -19,16 +19,22 @@ public class Main {
             len += (0.5 * a * t * t);
             allTime += t;
         }
+//        Arrays.sort();
         for (var i = 0; i < length; i++) {
         }
     }
 }
 
-class Demo1 {
+class Demo1 implements Comparable<Demo1> {
     public int a;
     public int b;
     Demo1(int a, int b) {
         this.a = a;
         this.b = b;
+    }
+
+    @Override
+    public int compareTo(Demo1 o) {
+        return 0;
     }
 }

@@ -48,7 +48,15 @@ class Employee {
     public Employee() {
 
     }
+    public Employee(String s) {
+        name = s;
+    }
+    public Employee(CharSequence sequence) {
+    }
 
+    public Employee getValue(String a) {
+        return new Employee();
+    }
     public String getName() {
         return name;
     }
@@ -61,4 +69,7 @@ class Employee {
         return id;
     }
 
+    public static void main(String[] args) {
+
+    }
 }
