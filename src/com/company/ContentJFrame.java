@@ -2,10 +2,9 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.text.*;
+import java.text.DecimalFormat;
 
-public class ContentJFrame extends JFrame implements ActionListener {
+public class ContentJFrame extends JFrame {
 
     private JComplex complex1, complex2, complex3, complex4;
     private JComboBox<String> box1, box2;
@@ -26,12 +25,23 @@ public class ContentJFrame extends JFrame implements ActionListener {
         this.setComplexData();
         this.button = new JButton("=");
         container.add(this.button);
-        this.button.addActionListener(this);
+        this.button.addActionListener(listener -> {
+            // 1、先获得转化数据
+            final var num1 = new Complex(Double.parseDouble(this.complex1.getTextField1().getText()), Double.parseDouble(this.complex1.getTextField2().getText()));
+            final var num2 = new Complex(Double.parseDouble(this.complex2.getTextField1().getText()), Double.parseDouble(this.complex2.getTextField2().getText()));
+            final var num3 = new Complex(Double.parseDouble(this.complex3.getTextField1().getText()), Double.parseDouble(this.complex3.getTextField2().getText()));
+            var numberFormat = new DecimalFormat("0.000");
+            // 2、根据选项的按钮进行计算
+            var res = calculate(num1, num2, num3);
+            // 3、将答案返回回来
+            this.complex4.getTextField1().setText("" + numberFormat.format(res.getRealNumber()));
+            this.complex4.getTextField2().setText("" + numberFormat.format(res.getImaginaryNumber()));
+        });
     }
 
     /**
      * 设置复数框中的数据
-     * */
+     */
     private void setComplexData() {
         var container = this.getContentPane();
         this.complex1 = new JComplex();
@@ -59,26 +69,6 @@ public class ContentJFrame extends JFrame implements ActionListener {
 
     private void setComboBoxData(JComboBox<String> box) {
         this.getContentPane().add(box);
-        box.addActionListener((var event) -> {
-
-        });
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // 当点击按钮的时候，执行下边的方法
-        if (e.getSource().equals(this.button)) {
-            // 1、先获得转化数据
-            final var num1 = new Complex(Double.parseDouble(this.complex1.getTextField1().getText()), Double.parseDouble(this.complex1.getTextField2().getText()));
-            final var num2 = new Complex(Double.parseDouble(this.complex2.getTextField1().getText()), Double.parseDouble(this.complex2.getTextField2().getText()));
-            final var num3 = new Complex(Double.parseDouble(this.complex3.getTextField1().getText()), Double.parseDouble(this.complex3.getTextField2().getText()));
-            var numberFormat = new DecimalFormat("0.000");
-            // 2、根据选项的按钮进行计算
-            var res = calculate(num1, num2, num3);
-            // 3、将答案返回回来
-            this.complex4.getTextField1().setText("" + numberFormat.format(res.getRealNumber()));
-            this.complex4.getTextField2().setText("" + numberFormat.format(res.getImaginaryNumber()));
-        }
     }
 
     private Complex calculate(Complex complex1, Complex complex2, Complex complex3) throws NumberFormatException {
