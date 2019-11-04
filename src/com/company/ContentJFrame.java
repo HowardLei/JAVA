@@ -2,6 +2,7 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
 
 public class ContentJFrame extends JFrame {
@@ -11,9 +12,14 @@ public class ContentJFrame extends JFrame {
     private JButton button;
     private static final String[] choices = {"+", "-", "*", "/"};
 
+    /**
+     * 设置初始化布局
+     */
     private ContentJFrame() {
         super("复数表达式计算");
+        // 所有 Swing 布局都要在 container 里面添加。
         var container = this.getContentPane();
+        // 设置默认关闭按钮操作
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -25,14 +31,14 @@ public class ContentJFrame extends JFrame {
         this.setComplexData();
         this.button = new JButton("=");
         container.add(this.button);
-        this.button.addActionListener(listener -> {
-            // 1、先获得转化数据
-            final var num1 = new Complex(Double.parseDouble(this.complex1.getTextField1().getText()), Double.parseDouble(this.complex1.getTextField2().getText()));
-            final var num2 = new Complex(Double.parseDouble(this.complex2.getTextField1().getText()), Double.parseDouble(this.complex2.getTextField2().getText()));
-            final var num3 = new Complex(Double.parseDouble(this.complex3.getTextField1().getText()), Double.parseDouble(this.complex3.getTextField2().getText()));
+        this.button.addActionListener((ActionEvent listener) -> {
+            // 1、先获得转化数据 （3 个）
+            final var num1 = new Complex(Double.parseDouble(ContentJFrame.this.complex1.getTextField1().getText()), Double.parseDouble(ContentJFrame.this.complex1.getTextField2().getText()));
+            final var num2 = new Complex(Double.parseDouble(ContentJFrame.this.complex2.getTextField1().getText()), Double.parseDouble(ContentJFrame.this.complex2.getTextField2().getText()));
+            final var num3 = new Complex(Double.parseDouble(ContentJFrame.this.complex3.getTextField1().getText()), Double.parseDouble(ContentJFrame.this.complex3.getTextField2().getText()));
             var numberFormat = new DecimalFormat("0.000");
             // 2、根据选项的按钮进行计算
-            var res = calculate(num1, num2, num3);
+            var res = this.calculate(num1, num2, num3);
             // 3、将答案返回回来
             this.complex4.getTextField1().setText("" + numberFormat.format(res.getRealNumber()));
             this.complex4.getTextField2().setText("" + numberFormat.format(res.getImaginaryNumber()));
@@ -70,7 +76,6 @@ public class ContentJFrame extends JFrame {
     private void setComboBoxData(JComboBox<String> box) {
         this.getContentPane().add(box);
     }
-
     private Complex calculate(Complex complex1, Complex complex2, Complex complex3) throws NumberFormatException {
         Complex num1;
         switch (this.box1.getSelectedIndex()) {
@@ -96,7 +101,7 @@ public class ContentJFrame extends JFrame {
         return num1;
     }
 
-    private Complex getSelectedOptions(Complex num1, Complex complex3) throws NumberFormatException {
+    private Complex getSelectedOptions(Complex num1, Complex complex3) {
         switch (this.box2.getSelectedIndex()) {
             case 0:
                 return num1.add(complex3);
@@ -107,7 +112,7 @@ public class ContentJFrame extends JFrame {
             case 3:
                 return num1.divide(complex3);
             default:
-                throw new NumberFormatException("输入数据异常");
+                throw new IllegalArgumentException("对不起，没有该选项。");
         }
     }
 

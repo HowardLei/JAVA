@@ -2,7 +2,7 @@ package com.company;
 
 import javax.swing.*;
 
-public class JComplex extends JPanel{
+public class JComplex extends JPanel {
     private JTextField textField1, textField2;
     private JLabel label1, label2;
 

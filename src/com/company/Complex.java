@@ -5,9 +5,14 @@ public class Complex implements Comparable<Complex> {
     private double realNumber;
     private double imaginaryNumber;
 
+    /**
+     * 通过正数和 i 所对应的数确定复数
+     * @param realNumber 无 i 的数
+     * @param imaginaryNumber 含 i 的数
+     */
     public Complex(double realNumber, double imaginaryNumber) {
-        this.imaginaryNumber = imaginaryNumber;
         this.realNumber = realNumber;
+        this.imaginaryNumber = imaginaryNumber;
     }
 
     /**

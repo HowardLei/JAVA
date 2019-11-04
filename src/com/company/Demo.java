@@ -1,6 +1,7 @@
 package com.company;
 
 import java.lang.reflect.*;
+import java.util.ArrayList;
 
 /**
  * Demo class
@@ -9,23 +10,14 @@ import java.lang.reflect.*;
  * @date 2019-08-21
  */
 public class Demo {
-    private String name;
-    private int age;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public static void main(String[] args) {
+        var strings = new ArrayList<String>();
+        strings.add("2341");
+        strings.add("342");
+        var iterator = strings.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
     }
 }
 
