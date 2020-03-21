@@ -18,11 +18,9 @@ public class ConnectMySQL {
             System.out.println("对不起，驱动加载失败");
             e.printStackTrace();
         }
-        try {
-            var connection = DriverManager.getConnection(sqlURL, "root", "SweetieCan@0830");
-            var statement = connection.createStatement();
-            System.out.println(statement);
-            var result = statement.executeQuery("select * from SC;");
+        try (var connection = DriverManager.getConnection(sqlURL, "root", "SweetieCan@0830");
+             var statement = connection.createStatement();
+             var result = statement.executeQuery("select * from SC;")) {
             var stringBuilders = new ArrayList<StringBuilder>();
             while (result.next()) {
                 var sno = result.getString("Sno");
@@ -32,15 +30,7 @@ public class ConnectMySQL {
                 stringBuilder.append(sno).append(" ").append(cno).append(" ").append(grade);
                 stringBuilders.add(stringBuilder);
             }
-            var iter = stringBuilders.iterator();
-            while (iter.hasNext()) {
-                System.out.println(iter.next());
-            }
-            if (result.isClosed() && connection.isClosed() && statement.isClosed()) {
-                result.close();
-                connection.close();
-                statement.close();
-            }
+            stringBuilders.forEach(System.out::println);
         } catch (SQLException exception) {
             System.out.println("SQL");
             exception.printStackTrace();

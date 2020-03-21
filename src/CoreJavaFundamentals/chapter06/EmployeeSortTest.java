@@ -1,4 +1,4 @@
-package CoreJavaFundamentals.Chapter06;
+package CoreJavaFundamentals.chapter06;
 
 import java.util.Arrays;
 

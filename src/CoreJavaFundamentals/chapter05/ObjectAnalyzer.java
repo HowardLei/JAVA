@@ -1,4 +1,4 @@
-package CoreJavaFundamentals.Chapter05;
+package CoreJavaFundamentals.chapter05;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Array;

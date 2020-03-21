@@ -6,7 +6,6 @@ package com.company;
  * @author apple
  * @date 2019-07-22
  */
-
 public class LinkedNode {
 
     private LinkedNode next = null;

@@ -1,4 +1,4 @@
-package CoreJavaFundamentals.Chapter06;
+package CoreJavaFundamentals.chapter06;
 
 public class Employee implements Comparable<Employee> {
     private String name;
