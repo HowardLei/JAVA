@@ -22,15 +22,15 @@ public class Complex implements Comparable<Complex> {
      */
     public Complex(String s) throws NumberFormatException {
         if (s.matches("\\d+\\+\\d+i")) {
-            String[] arr = s.split("\\+");
-            this.realNumber = Double.parseDouble(arr[0]);
+            var arr = s.split("\\+");
+            realNumber = Double.parseDouble(arr[0]);
             arr[1] = arr[1].substring(0, arr[1].length() - 1);
             this.imaginaryNumber = Double.parseDouble(arr[1]);
         } else if (s.matches("\\d+\\-\\d+i")) {
-            String[] arr = s.split("\\-");
-            this.realNumber = Double.parseDouble(arr[0]);
+            var arr = s.split("\\-");
+            realNumber = Double.parseDouble(arr[0]);
             arr[1] = arr[1].substring(0, arr[1].length() - 1);
-            this.imaginaryNumber = -Double.parseDouble(arr[1]);
+            imaginaryNumber = -Double.parseDouble(arr[1]);
         } else {
             throw new NumberFormatException("输入格式错误");
         }

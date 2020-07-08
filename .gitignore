@@ -5,6 +5,7 @@ bin-release/
 [Bb]in/
 .idea/
 out/
+JAVA.iml
 # Other files and folders
 .settings/
 

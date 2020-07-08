@@ -8,7 +8,7 @@ public class Sorted<T extends Number> {
     Sorted(T[] arr) {
         this.numbers = arr;
     }
-    Sorted(int[] values) {
+    public Sorted(int[] values) {
         this.values = values;
     }
     public <T extends Number> void quickSort(int left, int right, int x) {
@@ -38,17 +38,17 @@ public class Sorted<T extends Number> {
         }
     }
 
-    /***
+    /**
      * 正确的快速排序的实现
      * @param left 需要排序数组的左边界
      * @param right 需要排序数组的右边界
      */
     public void quickSort(int left, int right) {
         if (left < right) {
-            int leftPoint = left;
-            int rightPoint = right;
-            int compare = values[left];
-            int temp = 0;
+            var leftPoint = left;
+            var rightPoint = right;
+            var compare = values[left];
+            var temp = 0;
             while (leftPoint < rightPoint) {
                 while (compare <= values[rightPoint] && leftPoint < rightPoint) {
                     rightPoint--;
@@ -66,8 +66,6 @@ public class Sorted<T extends Number> {
             values[leftPoint] = compare;
             quickSort(left, leftPoint - 1);
             quickSort(rightPoint + 1, right);
-        } else {
-            return;
         }
     }
 
@@ -264,7 +262,7 @@ public class Sorted<T extends Number> {
 
     public static void main(String[] args) {
         int[] values = {2, 4, 51, 7, 9, 3, 10, 8, 34, 6, 9, 12};
-        Sorted sorted = new Sorted(values);
+        var sorted = new Sorted<>(values);
         sorted.quickSort(0, values.length - 1);
         for (int value : values) {
             System.out.println(value);

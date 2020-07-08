@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ObjectAnalyzer class
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @date 2019-08-20
  */
 public class ObjectAnalyzer {
-    private ArrayList<Object> visited = new ArrayList<>();
+    private final List<Object> visited = new ArrayList<>();
 
     public String toString(Object obj) {
         if (obj == null) {
